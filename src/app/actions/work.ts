@@ -3,7 +3,7 @@
 import { getBucket, logEvent } from '@/lib/gcp'
 import { revalidatePath } from 'next/cache'
 
-export async function uploadFile(formData: FormData) {
+export async function uploadFile(formData: FormData): Promise<void> {
   try {
     const file = formData.get('file') as File
     if (!file) throw new Error('No file provided')
@@ -14,7 +14,7 @@ export async function uploadFile(formData: FormData) {
       console.warn('Google Cloud not configured. Mocking file upload.')
       await logEvent(`Mock uploaded: ${file.name}`, 'INFO')
       revalidatePath('/work')
-      return { success: true }
+      return
     }
 
     const buffer = Buffer.from(await file.arrayBuffer())
@@ -27,8 +27,6 @@ export async function uploadFile(formData: FormData) {
 
     await logEvent(`Successfully uploaded file to GCS: ${file.name}`, 'INFO')
     revalidatePath('/work')
-    
-    return { success: true }
   } catch (error: any) {
     await logEvent(`Failed to upload file: ${error.message}`, 'ERROR')
     throw new Error('Failed to upload file')
