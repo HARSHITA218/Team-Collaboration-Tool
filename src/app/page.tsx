@@ -15,7 +15,7 @@ export default function Home() {
         </p>
         
         <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
-          <Link href="/dashboard" className="btn btn-primary" style={{ padding: '14px 28px', fontSize: '1.1rem' }}>
+          <Link href="/login" className="btn btn-primary" style={{ padding: '14px 28px', fontSize: '1.1rem' }}>
             Enter Workspace
           </Link>
           <a href="https://github.com" target="_blank" className="btn" style={{ padding: '14px 28px', fontSize: '1.1rem', background: 'rgba(255,255,255,0.1)', color: 'white' }}>
