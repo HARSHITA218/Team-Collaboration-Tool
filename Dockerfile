@@ -20,8 +20,6 @@ COPY . .
 # Next.js telemetry is disabled during the build
 ENV NEXT_TELEMETRY_DISABLED 1
 
-# Generate Prisma Client
-RUN npx prisma generate
 
 # Build the Next.js application
 RUN npm run build

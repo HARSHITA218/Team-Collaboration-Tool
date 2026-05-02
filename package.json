@@ -9,7 +9,10 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@google-cloud/logging": "^11.2.1",
+    "@google-cloud/storage": "^7.19.0",
     "@prisma/client": "^5.14.0",
+    "@supabase/supabase-js": "^2.105.1",
     "@types/bcryptjs": "^2.4.6",
     "bcryptjs": "^3.0.3",
     "jose": "^6.2.3",

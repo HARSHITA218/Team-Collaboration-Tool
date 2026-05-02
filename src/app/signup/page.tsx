@@ -1,5 +1,8 @@
 import Link from 'next/link';
 import { signup } from '../actions/auth';
+import { Card } from '@/components/ui/Card';
+import { Input } from '@/components/ui/Input';
+import { Button } from '@/components/ui/Button';
 
 export default function SignupPage() {
   return (
@@ -11,86 +14,58 @@ export default function SignupPage() {
       padding: '20px',
       background: 'radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.1), transparent)'
     }}>
-      <div className="glass-panel" style={{ maxWidth: '400px', width: '100%', padding: '40px' }}>
-        <h1 style={{ 
-          fontSize: '2rem', 
-          fontWeight: '800', 
-          marginBottom: '0.5rem', 
-          textAlign: 'center',
-          background: 'linear-gradient(135deg, #fff, #a855f7)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent'
-        }}>
-          Join SyncSpace
-        </h1>
-        <p style={{ color: '#9ca3af', textAlign: 'center', marginBottom: '2rem' }}>
-          Create an account to start collaborating
-        </p>
+      <Card style={{ maxWidth: '400px', width: '100%', padding: '40px' }}>
+        <header>
+          <h1 style={{ 
+            fontSize: '2rem', 
+            fontWeight: '800', 
+            marginBottom: '0.5rem', 
+            textAlign: 'center',
+            background: 'linear-gradient(135deg, #fff, #a855f7)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent'
+          }}>
+            Join SyncSpace
+          </h1>
+          <p style={{ color: '#9ca3af', textAlign: 'center', marginBottom: '2rem' }}>
+            Create an account to start collaborating
+          </p>
+        </header>
 
         <form action={signup} style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-            <label style={{ fontSize: '0.9rem', color: '#d1d5db' }}>Full Name</label>
-            <input 
-              name="name"
-              type="text" 
-              placeholder="John Doe"
-              required
-              style={{ 
-                padding: '12px', 
-                borderRadius: '8px', 
-                border: '1px solid var(--border-color)', 
-                background: 'rgba(0,0,0,0.3)', 
-                color: 'white',
-                outline: 'none'
-              }}
-            />
-          </div>
+          <Input 
+            label="Full Name"
+            name="name"
+            type="text" 
+            placeholder="John Doe"
+            required
+          />
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-            <label style={{ fontSize: '0.9rem', color: '#d1d5db' }}>Email Address</label>
-            <input 
-              name="email"
-              type="email" 
-              placeholder="name@company.com"
-              required
-              style={{ 
-                padding: '12px', 
-                borderRadius: '8px', 
-                border: '1px solid var(--border-color)', 
-                background: 'rgba(0,0,0,0.3)', 
-                color: 'white',
-                outline: 'none'
-              }}
-            />
-          </div>
+          <Input 
+            label="Email Address"
+            name="email"
+            type="email" 
+            placeholder="name@company.com"
+            required
+          />
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-            <label style={{ fontSize: '0.9rem', color: '#d1d5db' }}>Password</label>
-            <input 
-              name="password"
-              type="password" 
-              placeholder="••••••••"
-              required
-              style={{ 
-                padding: '12px', 
-                borderRadius: '8px', 
-                border: '1px solid var(--border-color)', 
-                background: 'rgba(0,0,0,0.3)', 
-                color: 'white',
-                outline: 'none'
-              }}
-            />
-          </div>
+          <Input 
+            label="Password"
+            name="password"
+            type="password" 
+            placeholder="••••••••"
+            required
+          />
 
-          <button type="submit" className="btn btn-primary" style={{ marginTop: '1rem', padding: '14px', background: 'linear-gradient(135deg, #a855f7, #6366f1)' }}>
+          <Button type="submit" variant="accent" style={{ marginTop: '1rem', padding: '14px', background: 'linear-gradient(135deg, #a855f7, #6366f1)' }}>
             Create Account
-          </button>
+          </Button>
         </form>
 
-        <p style={{ marginTop: '2rem', textAlign: 'center', fontSize: '0.9rem', color: '#9ca3af' }}>
-          Already have an account? <Link href="/login" style={{ color: '#a855f7', fontWeight: '600' }}>Log in</Link>
-        </p>
-      </div>
+        <footer style={{ marginTop: '2rem', textAlign: 'center', fontSize: '0.9rem', color: '#9ca3af' }}>
+          <p>Already have an account? <Link href="/login" style={{ color: '#a855f7', fontWeight: '600' }}>Log in</Link></p>
+        </footer>
+      </Card>
     </main>
   );
 }

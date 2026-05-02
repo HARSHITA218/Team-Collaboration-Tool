@@ -23,6 +23,7 @@ CREATE TABLE IF NOT EXISTS "Task" (
   status TEXT DEFAULT 'TODO',
   "authorId" TEXT NOT NULL REFERENCES "User"(id),
   "teamId" TEXT REFERENCES "Team"(id),
+  "dueDate" TIMESTAMPTZ,
   "createdAt" TIMESTAMPTZ DEFAULT NOW(),
   "updatedAt" TIMESTAMPTZ DEFAULT NOW()
 );

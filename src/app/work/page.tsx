@@ -1,3 +1,6 @@
+import { uploadFile } from '../actions/work';
+import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/Button';
 export default function WorkPage() {
   const files = [
     { name: 'Product_Requirements.docx', size: '2.4 MB', updated: '2 hours ago' },
@@ -7,27 +10,30 @@ export default function WorkPage() {
 
   return (
     <main className="animate-fade-in" style={{ padding: '40px' }}>
-      <div className="glass-panel" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '32px' }}>
+      <Card style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '32px' }}>
         <div>
           <h1 style={{ fontSize: '1.8rem', background: 'linear-gradient(135deg, #fff, #10b981)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Work Together</h1>
-          <p style={{ color: '#9ca3af' }}>Shared Files & Assets</p>
+          <p style={{ color: '#9ca3af' }}>Shared Files & Assets (Powered by Google Cloud Storage)</p>
         </div>
-        <button className="btn" style={{ background: 'var(--accent)', color: 'white' }}>+ Upload File</button>
-      </div>
+        <form action={uploadFile} style={{ display: 'flex', gap: '10px' }}>
+          <input type="file" name="file" required style={{ color: 'white' }} />
+          <Button type="submit" variant="accent">Upload File</Button>
+        </form>
+      </Card>
 
       <div className="grid-dashboard">
         {files.map(file => (
-          <div key={file.name} className="glass-panel" style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+          <Card key={file.name} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
             <div style={{ fontSize: '2.5rem' }}>📄</div>
             <div>
               <h3 style={{ fontSize: '1.1rem', marginBottom: '4px' }}>{file.name}</h3>
               <p style={{ fontSize: '0.85rem', color: '#9ca3af' }}>{file.size} • Updated {file.updated}</p>
             </div>
             <div style={{ display: 'flex', gap: '10px', marginTop: 'auto' }}>
-              <button style={{ padding: '6px 12px', background: 'rgba(255,255,255,0.05)', border: 'none', borderRadius: '4px', color: 'white', cursor: 'pointer', fontSize: '0.8rem' }}>Edit</button>
-              <button style={{ padding: '6px 12px', background: 'rgba(255,255,255,0.05)', border: 'none', borderRadius: '4px', color: 'white', cursor: 'pointer', fontSize: '0.8rem' }}>Download</button>
+              <Button variant="ghost" style={{ padding: '6px 12px', fontSize: '0.8rem' }}>Edit</Button>
+              <Button variant="ghost" style={{ padding: '6px 12px', fontSize: '0.8rem' }}>Download</Button>
             </div>
-          </div>
+          </Card>
         ))}
       </div>
     </main>
