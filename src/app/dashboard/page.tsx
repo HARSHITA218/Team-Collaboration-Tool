@@ -1,16 +1,9 @@
-import { prisma } from '@/lib/prisma'
+import { mockTasks } from '@/lib/mockDb'
 import { createTask, updateTaskStatus } from '../actions/tasks'
 import Link from 'next/link'
 
 export default async function DashboardPage() {
-  let tasks = []
-  try {
-    tasks = await prisma.task.findMany({
-      orderBy: { createdAt: 'desc' }
-    })
-  } catch (e) {
-    console.error("Database not initialized yet", e)
-  }
+  const tasks = mockTasks
 
   return (
     <main className="grid-dashboard animate-fade-in" style={{ padding: '40px', maxWidth: '1200px', margin: '0 auto' }}>
